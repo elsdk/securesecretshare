@@ -1,6 +1,6 @@
 {
-  "short_name": "Yopass",
-  "name": "Yopass",
+  "short_name": "Secrets Manager",
+  "name": "Secrets Manager",
   "icons": [
     {
       "src": "favicon.ico",

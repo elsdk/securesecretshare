@@ -1,4 +1,4 @@
-FROM golang:buster as app
+FROM golang:alpine as app
 RUN mkdir -p /yopass
 WORKDIR /yopass
 COPY . .
@@ -9,7 +9,12 @@ COPY website /website
 WORKDIR /website
 RUN yarn install && yarn build
 
-FROM gcr.io/distroless/base
+FROM alpine
+ENV PORT=1337
 COPY --from=app /yopass/yopass /yopass/yopass-server /
 COPY --from=website /website/build /public
-ENTRYPOINT ["/yopass-server"]
+ADD docker-entrypoint.sh /bin/start.sh
+RUN apk update && apk add memcached redis && \
+    addgroup -S yopass && adduser -S yopass -G yopass
+USER yopass
+ENTRYPOINT ["/bin/start.sh"]

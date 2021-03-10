@@ -29,7 +29,7 @@ export const Header = () => {
       <Toolbar>
         <Typography variant="h6" component="div">
           <Link href={home} color="inherit" underline="none">
-            Yopass
+            Secure Secrets Sharing
             <img
               className={classes.logo}
               width="40"
