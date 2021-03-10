@@ -1,5 +1,3 @@
-![Yopass-horizontal](https://user-images.githubusercontent.com/37777956/59544367-0867aa80-8f09-11e9-8d6a-02008e1bccc7.png)
-
 # Yopass - Share Secrets Securely
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/jhaals/yopass)](https://goreportcard.com/report/github.com/jhaals/yopass)
@@ -12,7 +10,7 @@ The sole purpose of Yopass is to minimize the amount of passwords floating aroun
 
 There is no perfect way of sharing secrets online and there is a trade off in every implementation. Yopass is designed to be as simple and "dumb" as possible without compromising on security. There's no mapping between the generated UUID and the user that submitted the encrypted message. It's always best send all the context except password over another channel.
 
-**[Demo available here](https://yopass.se)**. It's recommended to host yopass yourself if you care about security.
+**[Demo available here](https://secretsmanager.herokuapp.com/#/)**. It's recommended to host this app yourself if you care about security.
 
 - End-to-End encryption using [OpenPGP](https://openpgpjs.org/)
 - Secrets can only be viewed once
@@ -96,9 +94,15 @@ $ yopass-server -h
 
 Encrypted secrets can be stored either in Memcached or Redis by changing the `--database` flag.
 
-### AWS Lambda
+### Heroku
 
-_Yopass website is a separate component in this step which can be deployed to [netlify](https://netlify.com)_ for free.
+You can deploy the containerized app to [Heroku](https://heroku.com) by executing:
+
+```console
+./deploy/heroku.sh <heroku-app-name>
+```
+
+### AWS Lambda
 
 You can run Yopass on AWS Lambda backed by dynamodb
 
